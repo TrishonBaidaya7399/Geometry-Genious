@@ -1,3 +1,15 @@
+// Reusable get input value field
+function getInputValue(fieldId){
+    const inputField= document.getElementById(fieldId);
+    const inputValueText= inputField.value;
+    const value= parseFloat(inputValueText);
+    return value;
+}
+//Reusable set element inner text
+function setElementInnerText(elementId, area){
+    const element= document.getElementById(elementId);
+    element.innerText= area;
+}
 // calculate the Triangle Area 
 function calculateTriangleArea(){
     //get triangle base
@@ -19,39 +31,37 @@ function calculateTriangleArea(){
 }
 // calculate the rectangle area
 function calculateRectangleArea(){
-    //get rectangle width
-    const widthField= document.getElementById('rectangle-width');
-    const widthValueText= widthField.value;
-    const width= parseFloat(widthValueText)
-    console.log(`Width: ${width}`);
-    //get rectangle length
-    const lengthField= document.getElementById('rectangle-length');
-    const lengthValueText= lengthField.value;
-    const length= parseFloat(lengthValueText)
-    console.log(`Length: ${length}`);
-    // calculate rectangle area
-     const area= width*length;
-     console.log(`Area of rectangle: ${area}`);
-    //set rectangle area
-    const rectangleArea= document.getElementById('rectangle-area');
-    rectangleArea.innerText= area;  
+    const width=getInputValue('rectangle-width');
+    const length=getInputValue('rectangle-length');
+    const area= width*length;
+    setElementInnerText('rectangle-area', area);
+  
 }
 // calculate the Parallelogram area
 function calculateParallelogramArea(){
-    //get parallelogram base
-    const baseField= document.getElementById('parallelogram-base');
-    const baseValueText= baseField.value;
-    const base= parseFloat(baseValueText)
-    console.log(`Base: ${base}`);
-    //get parallelogram height
-    const heightField= document.getElementById('parallelogram-height');
-    const heightValueText= heightField.value;
-    const height= parseFloat(heightValueText)
-    console.log(`Height: ${height}`);
-    // calculate parallelogram area
-     const area= base*height;
-     console.log(`Area of parallelogram: ${area}`);
-    //set parallelogram area
-    const parallelogramArea= document.getElementById('parallelogram-area');
-    parallelogramArea.innerText= area;  
+    const base= getInputValue('parallelogram-base');
+    const height= getInputValue('parallelogram-height');
+    const area= base*height;
+    setElementInnerText('parallelogram-area', area);
+}
+// calculate the Rhombus area
+function calculateRhombusArea(){
+    const diagonal1= getInputValue('rhombus-diagonal1');
+    const diagonal2= getInputValue('rhombus-diagonal2');
+    const area= 0.5*diagonal1*diagonal2;
+    setElementInnerText('rhombus-area', area);
+}
+// calculate the Pentagon area
+function calculatePentagonArea(){
+    const perimeter= getInputValue('pentagon-perimeter');
+    const apothem= getInputValue('pentagon-apothem');
+    const area= 0.5*perimeter*apothem;
+    setElementInnerText('pentagon-area', area);
+}
+// calculate the Ellipse area
+function calculateEllipseArea(){
+    const ellipseA= getInputValue('ellipse-a');
+    const ellipseB= getInputValue('ellipse-b');
+    const area= 3.1416*ellipseA*ellipseB;
+    setElementInnerText('ellipse-area', area);
 }
